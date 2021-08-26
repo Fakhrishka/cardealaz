@@ -1,2 +1,2 @@
 # cardealazapi
-APIof Cardeal.az project
+Cardea.az project
