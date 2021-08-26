@@ -1,2 +1,2 @@
 # cardealazapi
-Cardea.az project
+Cardeal.az project
