@@ -1,0 +1,21 @@
+<h1>Users</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @distributors.each do |distributor| %>
+      <tr>
+        <td><%= distributor.name %></td>
+        <td><%= distributor.address %></td>
+        <td><%= link_to 'Show', distributor_path(:id => distributor.id)%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
