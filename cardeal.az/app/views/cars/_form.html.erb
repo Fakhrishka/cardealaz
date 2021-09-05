@@ -1,0 +1,18 @@
+<%= form_with(model: car) do |form| %>
+
+	<%=form.hidden_field :brand_id, :value => 1%>
+
+	<div class="field">
+		<%= form.label :model %>
+		<%= form.text_field :model %>
+	</div>
+
+	<div class="field">
+		<%= form.label :testdrive %>
+		<%= form.check_box :testdrive, {:class => "testdrive"}, 1, 0 %>
+	</div>
+
+	<div class="actions">
+		<%= form.submit %>
+	</div>
+<% end %>
