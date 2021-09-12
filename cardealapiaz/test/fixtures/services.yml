@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  brand: one
+  time: 2021-09-12
+  person: MyString
+  phone: MyString
+  jobtype: MyString
+  car: MyString
+
+two:
+  brand: two
+  time: 2021-09-12
+  person: MyString
+  phone: MyString
+  jobtype: MyString
+  car: MyString

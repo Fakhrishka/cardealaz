@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_10_121053) do
+ActiveRecord::Schema.define(version: 2021_09_12_115957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,18 @@ ActiveRecord::Schema.define(version: 2021_09_10_121053) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "services", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.date "time"
+    t.string "person"
+    t.string "phone"
+    t.string "jobtype"
+    t.string "car"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["brand_id"], name: "index_services_on_brand_id"
+  end
+
   create_table "test_drives", force: :cascade do |t|
     t.bigint "car_id", null: false
     t.string "person"
@@ -114,6 +126,7 @@ ActiveRecord::Schema.define(version: 2021_09_10_121053) do
   add_foreign_key "brands", "users"
   add_foreign_key "car_data", "cars"
   add_foreign_key "cars", "brands"
+  add_foreign_key "services", "brands"
   add_foreign_key "test_drives", "brands"
   add_foreign_key "test_drives", "cars"
   add_foreign_key "user_infos", "users"

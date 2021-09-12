@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 		namespace :v1 do
 			resources :distributors
 			resources :brands
+			resources :services
 			resources :cars
 			resources :test_drives
 			resources :sessions, only: [:create, :destroy]
@@ -24,8 +25,20 @@ end
 
 
 
+# URL: localhost:3000/api/v1/cars 
+# Response
+    # "BMW": [
+    #     {
+    #         "id": 3,
+    #         "brand_id": 2,
+    #         "model": "X5",
+    #         "test_drive": 0,
+    #         "created_at": "2021-09-05T15:42:39.750Z",
+    #         "updated_at": "2021-09-09T01:17:02.656Z",
+    #         "startprice": 89000
+    #     }
 # 
-# 
+
 # 
 # 
 # 

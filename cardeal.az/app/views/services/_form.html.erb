@@ -1,0 +1,35 @@
+<%= form_with(model: service, url: '/services') do |form| %>
+
+  <%= form.hidden_field :brand_id, :value => params[:brand]%>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.date_select :time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :person %>
+    <%= form.text_field :person %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="field">
+    <%= form.label :jobtype %>
+    <%= form.text_field :jobtype %>
+  </div>
+
+  <div class="field">
+    <%= form.label :car %>
+    <%= form.text_field :car %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

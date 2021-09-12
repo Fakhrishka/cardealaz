@@ -35,7 +35,17 @@ class CarsController < ApplicationController
 			}
 		}	
 
-		Net::HTTP::Delete.new(path,{'Depth' => 'Infinity', 'foo' => 'bar'})		
+		request = Net::HTTP::Delete.new(path,{'Depth' => 'Infinity', 'foo' => 'bar'})		
+		request.body = data.to_json
+
+		response = http.request(request)
+
+		if(response.kind_of? Net::HTTPSuccess)
+			redirect_to mycars_car_path(session[:brand_id]), notice: 'Added successfully'
+		else
+			puts 'Not done'
+		end
+
 	end
 
 	# post
@@ -51,14 +61,14 @@ class CarsController < ApplicationController
 		{ 
 			'car' => 
 			{
-				'model' => car['model'],
-				'test_drive' => car['test_drive'],
-				'brand_id' => car['brand_id']
+				'model' 		=> car['model'],
+				'test_drive' 	=> car['test_drive'],
+				'brand_id' 		=> car['brand_id']
 			},
 			'session' =>
 			{
-				'token' => session[:token],
-				'login' => session[:login]
+				'token' 		=> session[:token],
+				'login' 		=> session[:login]
 			}
 		}
 

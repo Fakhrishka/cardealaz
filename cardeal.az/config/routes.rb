@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
 	resources :distributors
 	resources :test_drives
+	resources :services
 	resources :cars  do
 		member do
 			get 'mycars'

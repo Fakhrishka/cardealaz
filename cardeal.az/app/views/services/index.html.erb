@@ -1,7 +1,9 @@
+<%brands=Brand.getAllBrands%>
+
 <div class="album py-5 bg-light">
 	<div class="container">
 		<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-			<% @brands.each do |brand| %>
+			<% brands.each do |brand| %>
 			<div class="col">
 				<div class="card shadow-sm">
 					<div class="card-body">
@@ -9,7 +11,7 @@
 						<p class="card-text"></p>
 						<div class="d-flex justify-content-between align-items-center">
 							<div class="btn-group">
-								<button type="button" class="btn btn-sm btn-outline-secondary"><a href="/brands/<%=brand.id%>">Show</a></button>
+								<button type="button" class="btn btn-sm btn-outline-secondary"><a href="/services/new?brand=<%=brand.id%>">Book service</a></button>
 							</div>
 						</div>
 					</div>
