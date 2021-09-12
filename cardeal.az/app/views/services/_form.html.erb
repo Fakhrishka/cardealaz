@@ -1,6 +1,6 @@
 <%= form_with(model: service, url: '/services') do |form| %>
 
-  <%= form.hidden_field :brand_id, :value => params[:brand]%>
+  <%= form.hidden_field :brand, :value => params[:brand]%>
 
   <div class="field">
     <%= form.label :time %>

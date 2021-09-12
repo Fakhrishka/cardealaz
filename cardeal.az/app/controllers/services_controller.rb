@@ -19,7 +19,7 @@ class ServicesController < ApplicationController
 				'phone' 	=> params[:phone],
 				'jobtype' 	=> params[:jobtype],
 				'car' 		=> params[:car],
-				'brand_id' 	=> params[:brand_id],
+				'brand'		=> params[:brand],
 				'time' 		=> DateTime.new(params['time(1i)'].to_i, params['time(2i)'].to_i, params['time(3i)'].to_i),
 			}
 		}

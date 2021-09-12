@@ -10,7 +10,7 @@ class Api::V1::ServicesController < ApplicationController
 			:jobtype	=> servicerequest['jobtype'],
 			:car 		=> servicerequest['car']
 		)
-		service.brand = Brand.find(servicerequest['brand_id'])
+		service.brand = Brand.find_by(:name => servicerequest['brand'])
 
 		if service.save
 			render json: {'status' => '200'}.as_json

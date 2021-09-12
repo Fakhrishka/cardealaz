@@ -24,14 +24,12 @@ class Api::V1::CarsController < ApplicationController
 
 	def mycars
 		# Function to check if user is logged in and authorized
-		puts params
 		if(!(user = tokenAuthorize(params)))
 			head(:unauthorized)
 			return
 		end
 
-		brand = Brand.find_by(:user_id => params[:id])
-
+		brand = Brand.find_by(:user_id => user[:id])
 		render json: brand.cars.as_json
 	end
 
