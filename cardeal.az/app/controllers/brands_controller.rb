@@ -7,7 +7,12 @@ class BrandsController < ApplicationController
 		@brands = Brand.getAllBrands
 	end
 	
+	def getCarsByBrand
+		@cars = Brand.getCarsByBrand(params[:id])
+	end
+
 	def show
+		@brand = Brand.findBrand(params[:id])
 	end
 
 	def new

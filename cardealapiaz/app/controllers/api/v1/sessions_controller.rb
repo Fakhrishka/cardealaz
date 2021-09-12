@@ -1,14 +1,15 @@
 class Api::V1::SessionsController < ApplicationController
 	def create
-		user = User.where(email: params[:email]).first
+		user = User.where(login: params[:login]).first
 		# user[:user_type] = user.user_info.user_type
 
 		if user&.valid_password?(params[:password])
 			userdata = 
 			{
 				:token => user.authentication_token,
-				:email => user.email,
-				:type => user.user_info.user_type
+				:login => user.login,
+				:type => user.user_info.user_type,
+				:brand_id => user.brands.first.id,
 			}
 
 			puts userdata

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  car: one
+  person: MyString
+  phone: MyString
+  personid: MyString
+  time: 2021-09-08
+
+two:
+  car: two
+  person: MyString
+  phone: MyString
+  personid: MyString
+  time: 2021-09-08

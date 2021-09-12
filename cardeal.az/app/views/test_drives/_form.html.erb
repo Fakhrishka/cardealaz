@@ -1,0 +1,29 @@
+<%= form_with(model: test_drive) do |form| %>
+
+
+  <%= form.hidden_field :car_id, :value => params[:car]%>
+
+  <div class="field">
+    <%= form.label :time %>
+    <%= form.date_select :time %>
+  </div>
+
+  <div class="field">
+    <%= form.label :person %>
+    <%= form.text_field :person %>
+  </div>
+
+  <div class="field">
+    <%= form.label :personid %>
+    <%= form.text_field :personid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.text_field :phone %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

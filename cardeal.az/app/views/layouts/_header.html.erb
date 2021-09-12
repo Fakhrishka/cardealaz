@@ -13,10 +13,10 @@
 		<% else %>
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 			  <li><a href="<%=root_path%>" class="nav-link px-2 text-white">All cars</a></li>
-			  <li><a href="<%=cars_path%>" class="nav-link px-2 text-white">My cars</a></li>
-			  <li><a href="<%=root_path%>" class="nav-link px-2 text-white">Test Drive</a></li>
+			  <li><a href="<%=mycars_car_path(session[:brand_id])%>" class="nav-link px-2 text-white">My cars</a></li>
+			  <li><a href="<%=test_drife_path(session[:brand_id])%>" class="nav-link px-2 text-white">Test Drive</a></li>
 			  <li><a href="<%=root_path%>" class="nav-link px-2 text-white">Services</a></li>
-			  <p>Welcome, <%=session[:email]%> !</p>
+			  <p>Welcome, <%=session[:login]%> !</p>
 			</ul>
 		<% end %>
 

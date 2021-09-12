@@ -1,0 +1,29 @@
+<div class="album py-5 bg-light">
+	<div class="container">
+	  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+		  <% @mycars.each do |car|%>
+				<div class="col">
+			  	<div class="card shadow-sm">
+						<div class="card-body">
+				  		<p class="card-text"><%=car['model']%></p>
+				  		<div class="d-flex justify-content-between align-items-center">
+								<div class="btn-group">
+					  			<button type="button" class="btn btn-sm btn-outline-secondary"><a href="/cars/<%=car['id']%>">Show</a></button>
+					  
+					  			<button type="button" class="btn btn-sm btn-outline-secondary">
+					  				<a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/cars/<%=car['id']%>">Destroy</a>
+									</div>
+				 		 	</div>
+						</div>
+			  	</div>
+				</div>
+			<%end%>
+	  </div>
+	</div>
+</div>
+
+	<% if logged_in? %>
+		<%= link_to 'New Car', new_car_path %>
+	<%else %>
+  	<%controller.redirect_to login_path, notice: 'Please, Log in!' %>
+  <%end%>

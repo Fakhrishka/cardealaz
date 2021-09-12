@@ -25,7 +25,7 @@ class DistributorsController < ApplicationController
 		res = Net::HTTP.get_response(uri)
 		jsresponse = res.body if res.is_a?(Net::HTTPSuccess)
 
-		@distributor = jsresponse
+		# @distributor = jsresponse
 		distributorJson = ActiveSupport::JSON.decode(jsresponse)
 		# @distributor = []
 		# distributorJson.each do |distributor_j|

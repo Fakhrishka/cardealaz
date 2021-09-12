@@ -17,13 +17,25 @@ class Brand < ApplicationRecord
 		return brands
 	end
 
-  	def self.find_brand(id)
+	def self.getCarsByBrand(id)
+		uri = URI('http://localhost:3000/api/v1/brandcars/' + id.to_s)
+		puts uri
+		res = Net::HTTP.get_response(uri)
+		jsresponse = res.body if res.is_a?(Net::HTTPSuccess)
+
+		puts jsresponse
+		carsJson = ActiveSupport::JSON.decode(jsresponse)
+		return OpenStruct.new(carsJson)
+	end
+
+  	def self.findBrand(id)
 		#http://localhost:3000/api/v1/distributors/1
 		uri = URI('http://localhost:3000/api/v1/brands/' + id.to_s)
 		res = Net::HTTP.get_response(uri)
 		jsresponse = res.body if res.is_a?(Net::HTTPSuccess)
 
 		brandJson = ActiveSupport::JSON.decode(jsresponse)
+		puts brandJson
 		return OpenStruct.new(brandJson)
 	end
 end

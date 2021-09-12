@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
 	def create
 		uri = URI('http://localhost:3000/api/v1/sessions')
-		res = Net::HTTP.post_form(uri, 'email' => params[:email], 'password' => params[:password])
+		res = Net::HTTP.post_form(uri, 'login' => params[:login], 'password' => params[:password])
 		jsresponse = res.body if res.is_a?(Net::HTTPSuccess)
 
 		sessionJson = ActiveSupport::JSON.decode(jsresponse)
@@ -9,7 +9,8 @@ class SessionsController < ApplicationController
 
 		puts sessions
 
-		session[:email] = sessions[:email]
+		session[:brand_id] = sessions[:brand_id]
+		session[:login] = sessions[:login]
 		session[:token] = sessions[:token]
 		session[:type] = sessions[:type]
 

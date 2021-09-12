@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_05_161105) do
+ActiveRecord::Schema.define(version: 2021_09_09_014108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,19 @@ ActiveRecord::Schema.define(version: 2021_09_05_161105) do
     t.string "moto"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
     t.index ["distributor_id"], name: "index_brands_on_distributor_id"
+    t.index ["user_id"], name: "index_brands_on_user_id"
+  end
+
+  create_table "car_data", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.integer "price"
+    t.string "name"
+    t.integer "engine"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["car_id"], name: "index_car_data_on_car_id"
   end
 
   create_table "cars", force: :cascade do |t|
@@ -56,6 +68,19 @@ ActiveRecord::Schema.define(version: 2021_09_05_161105) do
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "test_drives", force: :cascade do |t|
+    t.bigint "car_id", null: false
+    t.string "person"
+    t.string "phone"
+    t.string "personid"
+    t.date "time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "brand_id"
+    t.index ["brand_id"], name: "index_test_drives_on_brand_id"
+    t.index ["car_id"], name: "index_test_drives_on_car_id"
   end
 
   create_table "user_infos", force: :cascade do |t|
@@ -85,6 +110,10 @@ ActiveRecord::Schema.define(version: 2021_09_05_161105) do
   end
 
   add_foreign_key "brands", "distributors"
+  add_foreign_key "brands", "users"
+  add_foreign_key "car_data", "cars"
   add_foreign_key "cars", "brands"
+  add_foreign_key "test_drives", "brands"
+  add_foreign_key "test_drives", "cars"
   add_foreign_key "user_infos", "users"
 end
