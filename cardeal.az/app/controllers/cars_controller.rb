@@ -11,6 +11,15 @@ class CarsController < ApplicationController
 		@mycars = Car.getCarsByBrand(params[:id], session)
 		puts @mycars
 	end
+
+	def dealercars
+		puts session[:login]
+		if !logged_in?
+			redirect_to login_path, notice: 'Please, Log in!'
+		else
+			@mycars = Car.dealerCars(session)
+		end
+	end
 		
 	def show
 		#http://localhost:3000/api/v1/distributors/1

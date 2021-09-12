@@ -22,6 +22,7 @@ class Api::V1::CarsController < ApplicationController
 		# render json: cars.map { |car| [Brand.find_by(:id => car.id).name, car]}
 	end
 
+
 	def mycars
 		# Function to check if user is logged in and authorized
 		if(!(user = tokenAuthorize(params)))
@@ -31,6 +32,32 @@ class Api::V1::CarsController < ApplicationController
 
 		brand = Brand.find_by(:user_id => user[:id])
 		render json: brand.cars.as_json
+	end
+
+
+
+	def dealercars
+		if(!(user = tokenAuthorize(params)))
+			head(:unauthorized)
+			return
+		end
+
+
+		# brand = Brand.where(:user_id => user[:id])
+		# render json: brand.cars.as_json
+		
+		# render json: user.brands..cars.as_json
+
+
+		carsbybrand = {}
+		user.brands.each do |brand|
+			cars = []
+			brand.cars.each do |car|
+				cars << car
+			end
+			carsbybrand[brand.name] = cars
+		end
+		render json: carsbybrand.as_json
 	end
 
 

@@ -9,6 +9,18 @@ class Car < ApplicationRecord
 		return ActiveSupport::JSON.decode(jsresponse)
 	end
 
+	def self.dealerCars(session)
+		uri = URI('http://localhost:3000/api/v1/dealercars')
+
+		params = { :login => session[:login], :token => session[:token] }
+		uri.query = URI.encode_www_form(params)	
+
+		res = Net::HTTP.get_response(uri)
+		jsresponse = res.body if res.is_a?(Net::HTTPSuccess)
+		return ActiveSupport::JSON.decode(jsresponse)
+	end
+
+
 	def self.getCarsByBrand(id, cookie)
 		uri = URI('http://localhost:3000/api/v1/cars/' + id.to_s + '/mycars')
 

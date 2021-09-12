@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 				end
 			end
 
+			get "/dealercars", to: "cars#dealercars", as: "dealercars"
 			get "/mycars", to: "cars#dealcars", as: "brandcars"
 			# get "/brandcars", to: "cars#getCarsByBrand", as: "brandcars"
 		end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 		end
 	end
 
+
+	get "/dealer", to: "cars#dealercars", as: "dealercars"
 	# do
 	# 	get :dealcars, on: :collection
 	# end
